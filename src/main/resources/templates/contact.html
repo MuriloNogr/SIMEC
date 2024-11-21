@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Contato</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<a href="/index">Voltar</a>
+<h1>Fale Conosco</h1>
+<form action="/contact/sendMessage" method="post">
+  <label for="name">Nome:</label>
+  <input type="text" id="name" name="name" required><br>
+
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required><br>
+
+  <label for="message">Mensagem:</label>
+  <textarea id="message" name="message" required class="message"></textarea><br>
+
+  <button type="submit">Enviar</button>
+</form>
+
+<!-- Exibe a mensagem de confirmação, se existir -->
+<p th:text="${confirmationMessage}" th:if="${confirmationMessage != null}"></p>
+</body>
+</html>

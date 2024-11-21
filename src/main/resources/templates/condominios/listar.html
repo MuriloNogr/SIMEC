@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Condomínios</title>
+</head>
+<body>[
+<a href="/index">Voltar</a>
+<h1>Lista de Condomínios</h1>
+<a href="/condominios/novo">Adicionar Novo Condomínio</a>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Endereço</th>
+    <th>CEP</th>
+    <th>Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="condominio : ${condominios}">
+    <td th:text="${condominio.nome}">Nome</td>
+    <td th:text="${condominio.endereco}">Endereço</td>
+    <td th:text="${condominio.cep}">CEP</td>
+    <td>
+      <a th:href="@{/condominios/editar/{id}(id=${condominio.id})}">Editar</a>
+      <a th:href="@{/condominios/excluir/{id}(id=${condominio.id})}">Excluir</a>
+      <a th:href="@{/condominios/analisar-consumo/{id}(id=${condominio.id})}">Analisar Consumo</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
