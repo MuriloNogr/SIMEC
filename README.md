@@ -12,7 +12,7 @@
 
 [Link para a aplicação no Fly.io](https://simec.fly.dev/)
 
-[Link para o vídeo de apresentação]()
+[Link para o vídeo de apresentação](https://www.youtube.com/watch?v=-4ng3O57-hw)
 
 ---
 
