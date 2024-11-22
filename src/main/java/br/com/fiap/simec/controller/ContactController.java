@@ -18,7 +18,7 @@ public class ContactController {
 
     @GetMapping
     public String showContactForm(Model model) {
-        return "contact"; // Certifique-se de que contact.html está no diretório correto
+        return "contact";
     }
 
     @PostMapping("/sendMessage")

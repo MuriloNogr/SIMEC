@@ -17,19 +17,19 @@ public class CondominioThymeleafController {
     @GetMapping
     public String listarTodos(Model model) {
         model.addAttribute("condominios", condominioService.findAll());
-        return "condominios/listar"; // Nome do template Thymeleaf para listar os condomínios
+        return "condominios/listar";
     }
 
     @GetMapping("/novo")
     public String novoCondominioForm(Model model) {
         model.addAttribute("condominio", new Condominio());
-        return "condominios/formulario"; // Nome do template Thymeleaf para adicionar ou editar um condomínio
+        return "condominios/formulario";
     }
 
     @PostMapping("/salvar")
     public String salvarCondominio(@ModelAttribute Condominio condominio) {
         condominioService.save(condominio);
-        return "redirect:/condominios"; // Redireciona para a página de listagem após salvar
+        return "redirect:/condominios";
     }
 
     @GetMapping("/editar/{id}")
@@ -37,13 +37,13 @@ public class CondominioThymeleafController {
         Condominio condominio = condominioService.findById(id)
                 .orElseThrow(() -> new RuntimeException("Condomínio não encontrado: " + id));
         model.addAttribute("condominio", condominio);
-        return "condominios/formulario"; // Usa o mesmo formulário para edição
+        return "condominios/formulario";
     }
 
     @GetMapping("/excluir/{id}")
     public String excluirCondominio(@PathVariable Long id) {
         condominioService.deleteById(id);
-        return "redirect:/condominios"; // Redireciona para a página de listagem após excluir
+        return "redirect:/condominios";
     }
 
     @GetMapping("/analisar-consumo/{id}")
@@ -55,7 +55,7 @@ public class CondominioThymeleafController {
         if (consumoMedioCep == null) {
             model.addAttribute("mensagem",
                     String.format("Não há dados suficientes para calcular a média de consumo para o CEP %.0f.", condominio.getCep()));
-            return "condominios/analise-consumo"; // Página para mostrar a mensagem
+            return "condominios/analise-consumo";
         }
 
         String situacao = condominio.getConsumoMensal() > consumoMedioCep ? "acima" : "abaixo";
@@ -66,6 +66,6 @@ public class CondominioThymeleafController {
                 condominio.getNome(), condominio.getConsumoMensal(), situacao, consumoMedioCep);
 
         model.addAttribute("mensagem", mensagem);
-        return "condominios/analise-consumo"; // Página para exibir a análise
+        return "condominios/analise-consumo";
     }
 }

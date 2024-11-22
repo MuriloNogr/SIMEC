@@ -20,23 +20,14 @@ public class UsuarioService {
         this.modelMapper = modelMapper;
     }
 
-    /**
-     * Cadastrar um novo usuário
-     */
+
     public UsuarioDto cadastrarUsuario(UsuarioDto usuarioDto) {
-        // Converte o DTO em um modelo de entidade
         Usuario usuario = modelMapper.map(usuarioDto, Usuario.class);
-        // Codifica a senha
         usuario.setSenha(passwordEncoder.encode(usuarioDto.getSenha()));
-        // Salva no banco de dados
         Usuario savedUsuario = usuarioRepository.save(usuario);
-        // Converte de volta para DTO para retornar
         return modelMapper.map(savedUsuario, UsuarioDto.class);
     }
 
-    /**
-     * Busca um usuário por username ou email
-     */
     public Usuario buscarPorUsernameOuEmail(String usernameOuEmail) {
         return usuarioRepository.findByUsernameOrEmail(usernameOuEmail, usernameOuEmail)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado: " + usernameOuEmail));

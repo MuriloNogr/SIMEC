@@ -13,9 +13,9 @@ public class EmailService {
 
     public void sendEmail(String subject, String message) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo("argos.ai.fiap@gmail.com"); // Email de destino
-        mailMessage.setSubject(subject); // Assunto do e-mail
-        mailMessage.setText(message); // Conteúdo do e-mail
+        mailMessage.setTo("argos.ai.fiap@gmail.com");
+        mailMessage.setSubject(subject);
+        mailMessage.setText(message);
 
         mailSender.send(mailMessage);
     }
